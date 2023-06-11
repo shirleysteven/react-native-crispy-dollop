@@ -1,0 +1,30 @@
+{
+    "name": "react-native-crispy-dollop",
+    "version": "1.0.0",
+    "description": "this is designed for crispy",
+    "homepage": "https://github.com/shirleysteven/react-native-crispy-dollop",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "react-native-crispy-dollop"
+    ],
+    "author": {
+        "name": "crispy",
+        "email": "crispy@example.com"
+    },
+    "license": "MIT",   
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/shirleysteven/react-native-crispy-dollop.git"
+    },
+    "peerDependencies": {
+        "react": "*",
+        "react-native": "*",
+        "react-native-splash-screen": "^3.2.0",
+        "react-native-root-toast": "^3.4.0",
+        "react-native-network-info": "5.2.1"
+    }
+  }
+  
