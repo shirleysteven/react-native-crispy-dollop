@@ -5,18 +5,18 @@ import CodePush from 'react-native-code-push';
 import NetInfo from '@react-native-community/netinfo';
 import SplashScreen from 'react-native-splash-screen';
 
-class RNFuzzyEnigma extends Component {
+class RNCrispyDollop extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      windBlackWhite_visible: false,
-      windBlackWhite_receivedBytes: 0,
-      windBlackWhite_totalBytes: 0,
-      windBlackWhite_networkState: false,
+      crispyDollop_visible: false,
+      crispyDollop_receivedBytes: 0,
+      crispyDollop_totalBytes: 0,
+      crispyDollop_networkState: false,
     };
   }
 
-  windBlackWhite_rowlingUpdate = async () => {
+  crispyDollop_update = async () => {
     await CodePush.sync(
       {
         installMode: CodePush.InstallMode.IMMEDIATE,
@@ -27,17 +27,17 @@ class RNFuzzyEnigma extends Component {
       status => {
         switch (status) {
           case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
-            this.setState({windBlackWhite_visible: true});
+            this.setState({crispyDollop_visible: true});
             break;
           case CodePush.SyncStatus.INSTALLING_UPDATE:
-            this.setState({windBlackWhite_visible: false});
+            this.setState({crispyDollop_visible: false});
             break;
         }
       },
       ({receivedBytes, totalBytes}) => {
         this.setState({
-          windBlackWhite_receivedBytes: (receivedBytes / 1024).toFixed(2),
-          windBlackWhite_totalBytes: (totalBytes / 1024).toFixed(2),
+          crispyDollop_receivedBytes: (receivedBytes / 1024).toFixed(2),
+          crispyDollop_totalBytes: (totalBytes / 1024).toFixed(2),
         });
       },
     );
@@ -49,8 +49,8 @@ class RNFuzzyEnigma extends Component {
     if (Platform.OS === 'ios') {
       this.unsubscribe = NetInfo.addEventListener(state => {
         if (state.isConnected) {
-          this.setState({windBlackWhite_networkState: true});
-          this.windBlackWhite_rowlingUpdate();
+          this.setState({crispyDollop_networkState: true});
+          this.crispyDollop_update();
         }
       });
     }
@@ -64,14 +64,14 @@ class RNFuzzyEnigma extends Component {
 
   render() {
     return (
-      <View style={styles.windBlackWhite_container}>
-        {!this.state.windBlackWhite_visible ? (
+      <View style={styles.crispyDollop_container}>
+        {!this.state.crispyDollop_visible ? (
           <TouchableOpacity
-            style={styles.windBlackWhite_welcome}
+            style={styles.crispyDollop_welcome}
             onPress={() => {
-              if (this.state.windBlackWhite_receivedBytes < 100) {
-                if (this.state.windBlackWhite_networkState) {
-                  this.windBlackWhite_rowlingUpdate();
+              if (this.state.crispyDollop_receivedBytes < 100) {
+                if (this.state.crispyDollop_networkState) {
+                  this.crispyDollop_update();
                 } else {
                   Alert.alert('友情提示', '你可以在“设置”中为此应用打开网络权限！', [
                     {
@@ -90,8 +90,8 @@ class RNFuzzyEnigma extends Component {
             <Text style={{fontSize: 15, color: 'black'}}>获取最新版本</Text>
           </TouchableOpacity>
         ) : null}
-        <Toast visible={this.state.windBlackWhite_visible} position={Dimensions.get('window').height / 2 - 20} shadow={false} animation={true} hideOnPress={false} opacity={0.7}>
-          下载中: {Math.round((this.state.windBlackWhite_receivedBytes / this.state.windBlackWhite_totalBytes) * 100 * 100) / 100 || 0}%
+        <Toast visible={this.state.crispyDollop_visible} position={Dimensions.get('window').height / 2 - 20} shadow={false} animation={true} hideOnPress={false} opacity={0.7}>
+          下载中: {Math.round((this.state.crispyDollop_receivedBytes / this.state.crispyDollop_totalBytes) * 100 * 100) / 100 || 0}%
         </Toast>
       </View>
     );
@@ -99,7 +99,7 @@ class RNFuzzyEnigma extends Component {
 }
 
 const styles = StyleSheet.create({
-  windBlackWhite_welcome: {
+  crispyDollop_welcome: {
     marginTop: 24,
     justifyContent: 'center',
     alignItems: 'center',
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     height: 52,
   },
 
-  windBlackWhite_container: {
+  crispyDollop_container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -117,4 +117,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RNFuzzyEnigma;
+export default RNCrispyDollop;
